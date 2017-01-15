@@ -1,0 +1,85 @@
+resources:
+
+# resources for the webpressBlog pipelines from CI thru TEST environment
+
+#######1: Create DV pipeline
+
+# Docker Image for VISUALIZER
+  - name: wpblog-img
+    type: image
+    integration: dockerhub-integration
+    pointer:
+      sourceName: "inslabshippable/wordpress_blog"
+      isPull: false
+    #make sure this seed version exists in your registry account
+    seed:
+      versionName: latest 
+
+# Docker Image Options for VISUALIZER
+  - name: wpblog-img-opts
+    type: dockerOptions
+    version:
+      #memory: 128
+      #cpuShares: 256
+      name: wpblog
+      links:
+        - db:db
+      portMappings:
+        - 8888:80
+      publishAllPorts : true
+
+
+# Docker Image for VISUALIZER
+  - name: wpdb-img
+    type: image
+    integration: dockerhub-integration
+    pointer:
+      sourceName: "inslabshippable/wordpress_mysql"
+      isPull: false
+    #make sure this seed version exists in your registry account
+    seed:
+      versionName: latest 
+
+# Docker Image Options for VISUALIZER
+  - name: wpdb-img-opts
+    type: dockerOptions
+    version:
+      #memory: 128
+      #cpuShares: 256
+      name: db
+      portMappings:
+        - 3306:3306
+      publishAllPorts : true
+
+
+# env vars for VISUALIZER
+#  - name: demo-params
+#    type: params
+#    version:
+#      params:
+#        MONGO_API_URL: "https://api.mlab.com/api/1/databases/box-pipev2/collections/boxes?apiKey=QRsFUOV7XbNdHfTnJ7KU9bgQdnun-m_I"
+
+# add TEST env - AWS cluster
+  - name: wpblog-test-ecs
+    type: cluster
+    integration: aws-integration
+    pointer:
+      sourceName : "demotestcluster"
+      region: "us-east-1"
+
+#add Release step
+  - name: wpblog-ver
+    type: version
+    seed:
+      versionName: "1.0.0"
+
+#add PROD env - AWS cluster
+  - name: wpblog-prod-ecs
+    type: cluster
+    integration: aws-integration
+    pointer:
+      sourceName: "demoprodcluster"
+      region: "us-east-1"
+
+
+#######1: EOF Create DV pipeline

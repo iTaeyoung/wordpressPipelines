@@ -1,0 +1,5 @@
+triggers:
+  - name: wpblog-trigger
+    type: trigger
+    version:
+      counter: 1

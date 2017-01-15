@@ -1,0 +1,68 @@
+jobs:
+
+# jobs for the dv pipeline from CI thru TEST environment
+
+
+# manifest gen for VISUALIZER
+  - name: wpblog-man
+    type: manifest
+    steps:
+      - IN: demo-img
+      - IN: demo-img-opts
+      - TASK: managed
+
+  - name: wpdb-man
+    type: manifest
+    steps:
+      - IN: wpdb-img
+      - IN: wpdb-img-opts
+      - TASK: managed
+
+#/ manifest gen for VISUALIZER
+
+# TEST deployment for VISUALIZER to Amazon ECS
+  - name: wpblog-deploy-test
+    type: deploy
+    steps:
+      - IN: wpblog-man
+#      - IN: demo-params
+      - IN: wpblog-test-ecs
+      - TASK: managed
+
+# / TEST deployment for VISUALIZER to Amazon ECS
+
+# TEST deployment for VISUALIZER to Amazon ECS
+  - name: wpdb-deploy-test
+    type: deploy
+    steps:
+      - IN: wpdb-man
+#      - IN: demo-params
+      - IN: wpblog-test-ecs
+      - TASK: managed
+
+# / TEST deployment for VISUALIZER to Amazon ECS
+
+
+# Release
+  - name: wpblog-rel
+    type: release
+    steps:
+      - IN: wpblog-ver
+        switch: off
+      - IN: wpblog-deploy-test
+        switch: off
+      - IN: wpblog-trigger
+        switch: off
+      - TASK: managed
+        bump: minor
+# / Release
+
+# PRODCUTION deployment for VISUALIZER to Amazon ECS
+  - name: wpblog-deploy-prod
+    type: deploy
+    steps:
+      - IN: wpblog-rel
+        switch: off
+      - IN: wpblog-prod-ecs
+      - TASK: managed
+# / PRODCUTION deployment for VISUALIZER to Amazon ECS
