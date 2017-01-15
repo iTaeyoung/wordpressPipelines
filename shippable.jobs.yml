@@ -25,6 +25,16 @@ jobs:
     type: deploy
     steps:
       - IN: wpblog-man
+#      - IN: demo-params
+      - IN: wpblog-test-ecs
+      - TASK: managed
+
+# / TEST deployment for VISUALIZER to Amazon ECS
+
+# TEST deployment for VISUALIZER to Amazon ECS
+  - name: wpdb-deploy-test
+    type: deploy
+    steps:
       - IN: wpdb-man
 #      - IN: demo-params
       - IN: wpblog-test-ecs
@@ -41,6 +51,8 @@ jobs:
         switch: off
       - IN: wpblog-deploy-test
         switch: off
+      - IN: wpdb-deploy-test
+        switch: off
       - IN: wpblog-trigger
         switch: off
       - TASK: managed
@@ -56,3 +68,4 @@ jobs:
       - IN: wpblog-prod-ecs
       - TASK: managed
 # / PRODCUTION deployment for VISUALIZER to Amazon ECS
+
