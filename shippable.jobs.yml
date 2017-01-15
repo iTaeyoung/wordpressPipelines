@@ -7,8 +7,8 @@ jobs:
   - name: wpblog-man
     type: manifest
     steps:
-      - IN: demo-img
-      - IN: demo-img-opts
+      - IN: wpblog-img
+      - IN: wpblog-img-opts
       - TASK: managed
 
   - name: wpdb-man
