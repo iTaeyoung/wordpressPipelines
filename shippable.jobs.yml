@@ -25,16 +25,6 @@ jobs:
     type: deploy
     steps:
       - IN: wpblog-man
-#      - IN: demo-params
-      - IN: wpblog-test-ecs
-      - TASK: managed
-
-# / TEST deployment for VISUALIZER to Amazon ECS
-
-# TEST deployment for VISUALIZER to Amazon ECS
-  - name: wpdb-deploy-test
-    type: deploy
-    steps:
       - IN: wpdb-man
 #      - IN: demo-params
       - IN: wpblog-test-ecs
