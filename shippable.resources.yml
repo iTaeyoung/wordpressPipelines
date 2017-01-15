@@ -47,8 +47,8 @@ resources:
       #memory: 128
       #cpuShares: 256
       name: db
-      environment:
-        - {"name" : "MYSQL_ROOT_PASSWORD", "value" : "password1234"}
+      #environment:
+      #  - {"name" : "MYSQL_ROOT_PASSWORD", "value" : "password1234"}
       portMappings:
         - 3306:3306
       publishAllPorts : true
