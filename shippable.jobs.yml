@@ -17,7 +17,6 @@ jobs:
       - IN: wpdb-img
       - IN: wpdb-img-opts
       - TASK: managed
-
 #/ manifest gen for VISUALIZER
 
 # TEST deployment for VISUALIZER to Amazon ECS
@@ -28,7 +27,6 @@ jobs:
 #      - IN: demo-params
       - IN: wpblog-test-ecs
       - TASK: managed
-
 # / TEST deployment for VISUALIZER to Amazon ECS
 
 # TEST deployment for VISUALIZER to Amazon ECS

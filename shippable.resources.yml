@@ -28,7 +28,6 @@ resources:
         - 8888:80
       publishAllPorts : true
 
-
 # Docker Image for VISUALIZER
   - name: wpdb-img
     type: image
