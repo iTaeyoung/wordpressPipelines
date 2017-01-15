@@ -5,7 +5,7 @@ resources:
 #######1: Create DV pipeline
 
 # Docker Image for VISUALIZER
-  - name: wpblog-img
+  - name: wpblog-img 
     type: image
     integration: dockerhub-integration
     pointer:
