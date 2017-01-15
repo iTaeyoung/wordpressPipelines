@@ -5,7 +5,7 @@ resources:
 #######1: Create DV pipeline
 
 # Docker Image for VISUALIZER
-  - name: wpblog-img 
+  - name: wpblog-img
     type: image
     integration: dockerhub-integration
     pointer:
@@ -13,7 +13,7 @@ resources:
       isPull: false
     #make sure this seed version exists in your registry account
     seed:
-      versionName: lastest
+      versionName: latest 
 
 # Docker Image Options for VISUALIZER
   - name: wpblog-img-opts
@@ -27,6 +27,7 @@ resources:
       portMappings:
         - 8888:80
       publishAllPorts : true
+
 
 # Docker Image for VISUALIZER
   - name: wpdb-img
@@ -46,6 +47,8 @@ resources:
       #memory: 128
       #cpuShares: 256
       name: db
+      environment:
+        - "MYSQL_ROOT_PASSWORD": "password1234"
       portMappings:
         - 3306:3306
       publishAllPorts : true

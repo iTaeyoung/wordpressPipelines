@@ -4,6 +4,13 @@ jobs:
 
 
 # manifest gen for VISUALIZER
+  - name: wpdb-man
+    type: manifest
+    steps:
+      - IN: wpdb-img
+      - IN: wpdb-img-opts
+      - TASK: managed
+
   - name: wpblog-man
     type: manifest
     steps:
@@ -11,29 +18,20 @@ jobs:
       - IN: wpblog-img-opts
       - TASK: managed
 
-  - name: wpdb-man
-    type: manifest
-    steps:
-      - IN: wpdb-img
-      - IN: wpdb-img-opts
-      - TASK: managed
 #/ manifest gen for VISUALIZER
-
-# TEST deployment for VISUALIZER to Amazon ECS
-  - name: wpblog-deploy-test
-    type: deploy
-    steps:
-      - IN: wpblog-man
-#      - IN: demo-params
-      - IN: wpblog-test-ecs
-      - TASK: managed
-# / TEST deployment for VISUALIZER to Amazon ECS
 
 # TEST deployment for VISUALIZER to Amazon ECS
   - name: wpdb-deploy-test
     type: deploy
     steps:
       - IN: wpdb-man
+      - IN: wpblog-test-ecs
+      - TASK: managed
+
+  - name: wpblog-deploy-test
+    type: deploy
+    steps:
+      - IN: wpblog-man
 #      - IN: demo-params
       - IN: wpblog-test-ecs
       - TASK: managed
