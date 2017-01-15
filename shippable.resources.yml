@@ -13,7 +13,7 @@ resources:
       isPull: false
     #make sure this seed version exists in your registry account
     seed:
-      versionName: master.3 
+      versionName: lastest
 
 # Docker Image Options for VISUALIZER
   - name: wpblog-img-opts
@@ -37,7 +37,7 @@ resources:
       isPull: false
     #make sure this seed version exists in your registry account
     seed:
-      versionName: master.1 
+      versionName: latest 
 
 # Docker Image Options for VISUALIZER
   - name: wpdb-img-opts
