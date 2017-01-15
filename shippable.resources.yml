@@ -23,7 +23,7 @@ resources:
       #cpuShares: 256
       name: wpblog
       links:
-        - db:db
+        - "db:db"
       portMappings:
         - 8888:80
       publishAllPorts : true
