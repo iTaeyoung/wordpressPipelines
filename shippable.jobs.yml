@@ -21,18 +21,18 @@ jobs:
 #/ manifest gen for VISUALIZER
 
 # TEST deployment for VISUALIZER to Amazon ECS
-  - name: wpdb-deploy-test
-    type: deploy
-    steps:
-      - IN: wpdb-man
-      - IN: wpblog-test-ecs
-      - TASK: managed
+#  - name: wpdb-deploy-test
+#    type: deploy
+#    steps:
+#      - IN: wpdb-man
+#      - IN: wpblog-test-ecs
+#      - TASK: managed
 
   - name: wpblog-deploy-test
     type: deploy
     steps:
+      - IN: wpdb-man
       - IN: wpblog-man
-#      - IN: demo-params
       - IN: wpblog-test-ecs
       - TASK: managed
 
