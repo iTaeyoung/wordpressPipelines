@@ -53,8 +53,8 @@ jobs:
         switch: off
       - IN: wpblog-deploy-test
         switch: off
-      - IN: wpdb-deploy-test
-        switch: off
+#      - IN: wpdb-deploy-test
+#        switch: off
       - IN: wpblog-trigger
         switch: off
       - TASK: managed
