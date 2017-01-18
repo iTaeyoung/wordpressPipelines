@@ -19,7 +19,7 @@ resources:
   - name: wpblog-img-opts
     type: dockerOptions
     version:
-      memory: 256
+      memory: 128
       #cpuShares: 256
       name: wpblog
       links:
@@ -44,7 +44,7 @@ resources:
   - name: wpdb-img-opts
     type: dockerOptions
     version:
-      memory: 256
+      memory: 128
       #cpuShares: 256
       name: db
       #environment:
