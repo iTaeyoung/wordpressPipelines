@@ -1,0 +1,12 @@
+language: none
+
+build:
+  ci:
+    - echo 'CI Running'
+
+integrations:
+  notifications:
+    - integrationName: "triggerWordpressBlog"
+      type: webhook
+      on_success: always
+      on_failure: never
