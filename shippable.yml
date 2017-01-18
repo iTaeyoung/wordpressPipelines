@@ -5,8 +5,13 @@ build:
     - echo 'CI Running'
 
 integrations:
+  hub:
+    - integrationName: "dockerhub-integration"
+      type: docker
   notifications:
     - integrationName: "triggerWordpressBlog"
       type: webhook
+      payload:
+        - versionName=latest
       on_success: always
       on_failure: never
