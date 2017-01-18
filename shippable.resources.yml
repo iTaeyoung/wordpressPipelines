@@ -25,7 +25,7 @@ resources:
       links:
         - "db:db"
       portMappings:
-        - 8888:80
+        - 80:80
       publishAllPorts : true
 
 
