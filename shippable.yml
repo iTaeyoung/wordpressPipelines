@@ -9,7 +9,7 @@ integrations:
     - integrationName: "dockerhub-integration"
       type: docker
   notifications:
-    - integrationName: "triggerWordpressBlog"
+    - integrationName: "triggerWordpressPipelines"
       type: webhook
       payload:
         - versionName=latest
